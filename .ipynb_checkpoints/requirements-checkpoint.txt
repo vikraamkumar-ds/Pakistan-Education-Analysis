@@ -1,0 +1,71 @@
+# ============================================================
+# Pakistan Rural Education Dashboard — ASER 2023
+# requirements.txt
+# ============================================================
+# Install with:   pip install -r requirements.txt
+# Python version: 3.10+
+# ============================================================
+
+# ── Core Data Science ──────────────────────────────────────
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.11.0
+
+# ── Machine Learning ───────────────────────────────────────
+scikit-learn>=1.7.0       # Random Forest model training & prediction
+joblib>=1.3.0             # Model serialization (.pkl loading)
+
+# ── Model Interpretability ─────────────────────────────────
+# REQUIRED: best_model_bundle.pkl contains a SHAP explainer object.
+# The pkl will FAIL to load if shap is not installed.
+shap>=0.44.0
+
+# ── Dashboard Framework ────────────────────────────────────
+streamlit>=1.35.0
+
+# ── Visualization ──────────────────────────────────────────
+plotly>=5.18.0            # Interactive charts, choropleth maps
+matplotlib>=3.7.0         # Static plots (SHAP beeswarm, confusion matrix)
+seaborn>=0.13.0           # Statistical visualization
+
+# ── Excel Support ──────────────────────────────────────────
+openpyxl>=3.1.0           # Reading ITAASER2023School.xlsx
+xlrd>=2.0.1               # Legacy .xls support (optional)
+
+# ── Geospatial (optional, for advanced map work) ───────────
+# Uncomment if you process GeoJSON programmatically:
+# geopandas>=0.14.0
+# shapely>=2.0.0
+
+# ── Notebook / Development ─────────────────────────────────
+jupyter>=1.0.0
+ipykernel>=6.25.0
+notebook>=7.0.0
+
+# ── Utilities ──────────────────────────────────────────────
+requests>=2.31.0
+python-dotenv>=1.0.0      # For environment variable management (optional)
+
+# ============================================================
+# NOTES
+# ============================================================
+#
+# 1. shap install may require build tools on some systems:
+#    Linux:   sudo apt-get install build-essential
+#    macOS:   xcode-select --install
+#    Windows: Install Visual C++ Build Tools
+#
+# 2. If you encounter a scikit-learn version warning when
+#    loading best_model_bundle.pkl, re-save the model in your
+#    environment:
+#      import joblib
+#      bundle = joblib.load('models/best_model_bundle.pkl')
+#      joblib.dump(bundle, 'models/best_model_bundle.pkl')
+#
+# 3. For the choropleth map to work, replace:
+#      data/pakistan_districts.geojson
+#    with a proper 151-district Pakistan GeoJSON from:
+#      https://gadm.org/download_country.html  (Level 3)
+#      https://data.humdata.org/dataset/cod-ab-pak
+#
+# ============================================================
